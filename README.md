@@ -16,3 +16,23 @@ composer install
 ```
 
 Le projet nécéssite aussi une base de données accessible, dont les informations de connexion doivent être indiquées dans le fichier *.env*, fichier n'étant pas synchronisé avec git (il faut le créer à la main, à partir du fichier distant *.env.dist*)
+
+Pour mettre à jour la base de données à partir des différentes entités (classes):
+
+La première fois :
+
+```
+vendor/bin/doctrine orm:schema-tool:create
+```
+
+Les fois suivantes :
+
+```
+vendor/bin/doctrine orm:schema-tool:update --force --dump-sql
+```
+
+Pour lancer le programme, il suffit d'executer la commande suivante:
+
+```
+composer run
+```

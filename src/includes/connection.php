@@ -16,6 +16,7 @@ function verify_connection()
 {
 	if(!is_connected())
 	{
+		$_SESSION['redirect'] = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 		header('Location: connect.php');
 		die('Redirect');
 	}

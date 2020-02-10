@@ -14,6 +14,11 @@
 		"post-update-cmd": [
 			"php copyAdminlte.php"
 		],
-		"run": "php -S 127.0.0.1:8000 -t src"
-	}
+		"run": [
+			"php -S 127.0.0.1:8000 -t src"
+		]
+	},
+	"config": {
+    "process-timeout": 0
+  }
 }

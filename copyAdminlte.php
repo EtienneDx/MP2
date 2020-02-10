@@ -33,4 +33,6 @@ function recurseCopy($src, $dst)
 }
 
 recurseCopy('.' . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'almasaeed2010' . DIRECTORY_SEPARATOR . 'adminlte' . DIRECTORY_SEPARATOR . 'dist',
-	'.' . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'adminlte');
+	'.' . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'adminlte' . DIRECTORY_SEPARATOR . 'dist');
+recurseCopy('.' . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'almasaeed2010' . DIRECTORY_SEPARATOR . 'adminlte' . DIRECTORY_SEPARATOR . 'bower_components',
+	'.' . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'adminlte' . DIRECTORY_SEPARATOR . 'bower_components');

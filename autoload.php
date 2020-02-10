@@ -9,6 +9,6 @@ $dotenv->load();
 $dotenv->required('DEV')->isBoolean();
 $dotenv->required('DATABASE_URL');
 
-$ormConfig = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/src"), $_ENV["DEV"], null, null, false);
+$ormConfig = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/src/Entity"), $_ENV["DEV"], null, null, false);
 
 $entityManager = EntityManager::create(array('url' => $_ENV["DATABASE_URL"]), $ormConfig);

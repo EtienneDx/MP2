@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
 * @ORM\Entity
-* @ORM\Table(name="users")
+* @ORM\Table(name="trains")
 */
-class User
+class Train
 {
 	/**
 	* @ORM\Id
@@ -20,12 +20,12 @@ class User
 	/**
 	* @ORM\Column(type="string")
 	**/
-  private $username;
+  private $name;
 
 	/**
-	* @ORM\Column(type="string")
+	* @ORM\Column(type="datetime")
 	**/
-  private $password;
+  private $lastCleanup;
 
 	/**
 	* @ORM\OneToMany(targetEntity="Notation", mappedBy="train")
@@ -39,15 +39,15 @@ class User
 		$this->notations = new ArrayCollection();
 	}
 
-	public function setUsername($username)
+	public function setName($name)
 	{
-		$this->username = $username;
+		$this->name = $name;
 		return $this;
 	}
 
-	public function getUsername()
+	public function getName()
 	{
-		return $this->username;
+		return $this->name;
 	}
 
 	public function setPassword($password)

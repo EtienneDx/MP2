@@ -1,12 +1,9 @@
 <?php
-// src/index.php
+
 require_once __DIR__ . "/../autoload.php" ;
 require_once __DIR__ . "/includes/connection.php";
 
 session_start();
-
-verify_connection();
-$user = get_user();
 
 if(!isset($_GET['train_id']))
 {
@@ -25,7 +22,7 @@ if(!$train)
 <html>
   <head>
     <meta charset="utf-8"/>
-    <title>Connexion - Balance ton train</title>
+    <title>Notation - Balance ton train</title>
 
     <link rel="stylesheet" href="./adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="./css/notation.css"/>
@@ -59,6 +56,10 @@ if(!$train)
 				</div>
 				<br><br>
 				<button id="send" class="btn btn-info">Envoyer ma réponse</button>
+				<form id="form" action="note.php" method="POST">
+					<input type="text" name="train_id" value="<?php echo $_GET['train_id']; ?>"></input>
+					<input type="number" id="note" name="note"></input>
+				</form>
 			</div>
 	  </div>
 

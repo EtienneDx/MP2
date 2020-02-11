@@ -6,7 +6,6 @@ require_once __DIR__ . "/includes/connection.php";
 session_start();
 
 $error = null;
-
 if(is_connected())// already connected
 {
   $redirect = $_SESSION['redirect'];

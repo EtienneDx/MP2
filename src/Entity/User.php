@@ -39,6 +39,11 @@ class User
 		$this->notations = new ArrayCollection();
 	}
 
+	public function getId()
+	{
+		return $this->id;
+	}
+
 	public function setUsername($username)
 	{
 		$this->username = $username;

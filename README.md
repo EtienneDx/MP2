@@ -36,3 +36,9 @@ Pour lancer le programme, il suffit d'executer la commande suivante:
 ```
 composer run
 ```
+
+Il peut arriver des erreurs liées au proxy des entités, qui doivent alors être regenerés:
+
+```
+vendor/bin/doctrine orm:generate-proxies
+```

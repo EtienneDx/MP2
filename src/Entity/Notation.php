@@ -29,7 +29,7 @@ class Notation
 
 	/**
 	* @ORM\ManyToOne(targetEntity="User", inversedBy="notations")
-	* @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+	* @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
 	**/
   private $user;
 
@@ -45,6 +45,11 @@ class Notation
 		$this->date = $date;
 		$this->user = $user;
 		$this->train = $train;
+	}
+
+	public function getId()
+	{
+		return $this->id;
 	}
 
 	public function setNote($note)

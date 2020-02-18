@@ -76,4 +76,19 @@ class User
 	{
 		array_push($this->notations, $notation);
 	}
+
+  public function getTrainsCount()
+  {
+    $set = array();
+    $i = 0;
+    foreach ($this->notations as $n)
+    {
+      if(!in_array($n->getTrain()->getId(), $set))
+      {
+        array_push($set, $n->getTrain()->getId());
+        $i++;
+      }
+    }
+    return $i;
+  }
 }

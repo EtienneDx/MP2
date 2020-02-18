@@ -4,6 +4,6 @@ use \Entity\User;
 
 function clear_cookies()
 {
-	unset($_SESSION['username'])
-	unset($_SESSION['password'])
+	unset($_SESSION['username']);
+	unset($_SESSION['password']);
 }

@@ -32,6 +32,11 @@ function recurseCopy($src, $dst)
   closedir($dir);
 }
 
+if(!is_dir('.' . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'adminlte'))
+{
+	mkdir('.' . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'adminlte');
+}
+
 recurseCopy('.' . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'almasaeed2010' . DIRECTORY_SEPARATOR . 'adminlte' . DIRECTORY_SEPARATOR . 'dist',
 	'.' . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'adminlte' . DIRECTORY_SEPARATOR . 'dist');
 recurseCopy('.' . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'almasaeed2010' . DIRECTORY_SEPARATOR . 'adminlte' . DIRECTORY_SEPARATOR . 'bower_components',

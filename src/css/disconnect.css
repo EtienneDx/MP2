@@ -40,8 +40,7 @@ html, body
 	height: 100%;
 }
 
-#createAccount
+#disconnect
 {
-	position: absolute;
-	bottom: 0;
+	color: rgb(212, 12, 12);
 }

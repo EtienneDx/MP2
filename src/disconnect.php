@@ -2,13 +2,14 @@
 
 require_once __DIR__ . "/../autoload.php" ;
 require_once __DIR__ . "/includes/connection.php";
+require_once __DIR__ . "/includes/deconnection.php";
 
 session_start();
 
 $error = null;
 if(is_connected())// already connected
 {
-	echo("test")
+	clear_cookies();
 }
 
 ?>
@@ -26,11 +27,12 @@ if(is_connected())// already connected
 		  <div id="formContent">
 				<form method="POST" target="_self">
 					<div class="form-group">
-						<label for="disconnect">Se déconnecter : </label>
-						<input type="text" class="form-control" name="disconnect" id="disconnect" placeholder="Se déconnecter"></input>
+						<div class="form-group">
+							<label for="disconnect">Vous êtes bien déconnecté !</label>
+						</div>
 					</div>
           <?php if($error !== null): ?>
-  					<div class="alert alert-danger">
+  					<div id="alert alert-danger">
   	          <?php echo $error; ?>
   	        </div>
           <?php endif; ?>

@@ -106,7 +106,7 @@ $user = get_user();
 							?>
 							<ul>
 								<?php if($train): ?>
-									<li><a href="./notation.php?train_id=1">noter un train</a></li>
+									<li><a href="./notation.php?train_id=<?php echo $train->getId(); ?>">noter un train</a></li>
 								<?php else: ?>
 									<li>Aucun train n'a été créé, impossible d'en noter pour le moment! (Il faut temporairement le créer directement via phpmyadmin)</li>
 								<?php endif; ?>

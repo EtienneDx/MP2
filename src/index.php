@@ -102,11 +102,11 @@ $user = get_user();
 						</div>
 						<div class="box-body">
 							<?php
-							$train = $em->getRepository(\Entity\Train::class)->findOneBy([]);
+							$train = $entityManager->getRepository(\Entity\Train::class)->findOneBy([]);
 							?>
 							<ul>
 								<?php if($train): ?>
-									<li><a href="./notation.php?train_id=1"</li>
+									<li><a href="./notation.php?train_id=1">noter un train</a></li>
 								<?php else: ?>
 									<li>Aucun train n'a été créé, impossible d'en noter pour le moment! (Il faut temporairement le créer directement via phpmyadmin)</li>
 								<?php endif; ?>

@@ -24,19 +24,8 @@ if(is_connected())// already connected
   </head>
   <body>
 		<div id="container">
-		  <div id="formContent">
-				<form method="POST" target="_self">
-					<div class="form-group">
-						<div class="form-group">
-							<div id="disconnect">Vous êtes bien déconnecté</div>
-						</div>
-					</div>
-          <?php if($error !== null): ?>
-  					<div class="alert alert-danger">
-  	          <?php echo $error; ?>
-  	        </div>
-          <?php endif; ?>
-				</form>
+		  <div id="content">
+				<div id="disconnect">Vous êtes bien déconnecté</div>
 			</div>
 	  </div>
 

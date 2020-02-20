@@ -28,11 +28,11 @@ if(is_connected())// already connected
 				<form method="POST" target="_self">
 					<div class="form-group">
 						<div class="form-group">
-							<label for="disconnect">Vous êtes bien déconnecté !</label>
+							<div id="disconnect">Vous êtes bien déconnecté</div>
 						</div>
 					</div>
           <?php if($error !== null): ?>
-  					<div id="alert alert-danger">
+  					<div class="alert alert-danger">
   	          <?php echo $error; ?>
   	        </div>
           <?php endif; ?>

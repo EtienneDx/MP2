@@ -34,7 +34,7 @@ vendor/bin/doctrine orm:schema-tool:update --force --dump-sql
 Pour lancer le programme, il suffit d'executer la commande suivante:
 
 ```
-composer run
+composer run-script run
 ```
 
 Il peut arriver des erreurs liées au proxy des entités, qui doivent alors être regenerés:

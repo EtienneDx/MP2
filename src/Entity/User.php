@@ -33,6 +33,8 @@ class User
 	*/
 	private $notations;
 
+	private $role = false;
+
 	public function __construct($username, $password)
 	{
 		$this->username = $username;
@@ -91,4 +93,15 @@ class User
     }
     return $i;
   }
+
+  public function getRole()
+	{
+		return $this->role;
+	}
+
+	public function setRole($role)
+	{
+		$this->role = $role;
+		return $this;
+	}
 }

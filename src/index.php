@@ -113,6 +113,16 @@ $user = get_user();
 							</ul>
 						</div>
           </div>
+          <?php if($user->getRole()): ?>
+	          <div id="admin" class="box">
+				<div class="box-header with-border">
+					<h3 class="box-title">Section administrateur</h3>
+				</div>
+				<div class="box-body">
+					<a href="add_train.php" class="btn btn-info">Ajouter un train</a>
+				</div>
+	          </div>
+          <?php endif; ?>
         </section>
       </div>
 		</div>

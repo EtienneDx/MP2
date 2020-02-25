@@ -33,6 +33,9 @@ class User
 	*/
 	private $notations;
 
+	/**
+	* @ORM\Column(type="boolean")
+	*/
 	private $role = false;
 
 	public function __construct($username, $password)
@@ -79,29 +82,29 @@ class User
 		array_push($this->notations, $notation);
 	}
 
-  public function getTrainsCount()
-  {
-    $set = array();
-    $i = 0;
-    foreach ($this->notations as $n)
-    {
-      if(!in_array($n->getTrain()->getId(), $set))
-      {
-        array_push($set, $n->getTrain()->getId());
-        $i++;
-      }
-    }
-    return $i;
-  }
+	public function getTrainsCount()
+	{
+		$set = array();
+    	$i = 0;
+    	foreach ($this->notations as $n)
+    	{
+      	if(!in_array($n->getTrain()->getId(), $set))
+      	{
+        	array_push($set, $n->getTrain()->getId());
+        	$i++;
+      	}
+    	}
+    	return $i;
+  	}
 
-  public function getRole()
+  	public function getRole()
 	{
 		return $this->role;
 	}
 
 	public function setRole($role)
 	{
-		$this->role = $role;
+		$this->$role = $role;
 		return $this;
 	}
 }

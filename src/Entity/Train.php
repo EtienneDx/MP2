@@ -33,11 +33,11 @@ class Train
 	*/
 	private $notations;
 
-	public function __construct($username, $password)
+	public function __construct($name, $lastCleanup)
 	{
-		$this->username = $username;
-		$this->password = $password;
-		$this->notations = new ArrayCollection();
+		$this->name = $name;
+		$this->lastCleanup = $lastCleanup;
+		$this->notation = new ArrayCollection();
 	}
 
 	public function getId()
@@ -56,15 +56,10 @@ class Train
 		return $this->name;
 	}
 
-	public function setPassword($password)
+	public function setLastCleanup($lastCleanup)
 	{
-		$this->password = $password;
+		$this->lastCleanup = $lastCleanup;
 		return $this;
-	}
-
-	public function getPassword()
-	{
-		return $this->password;
 	}
 
 	public function getNotations()

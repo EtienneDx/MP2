@@ -26,6 +26,9 @@ if(is_connected())// already connected
 		<div id="container">
 		  <div id="content">
 				<div id="disconnect">Vous êtes bien déconnecté</div>
+        <div class="box-body">
+          <a href="connect.php" class="btn btn-info" id="go_back">Retourner sur le site</a>
+        </div>
 			</div>
 	  </div>
 

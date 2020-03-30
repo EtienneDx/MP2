@@ -4,6 +4,8 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-grayscale/blob/master/LICENSE)
  */
 
+
+
 #mainNav {
   min-height: 56px;
   background-color: #fff;
@@ -47,15 +49,16 @@
   }
   #mainNav .navbar-brand {
     padding: .5rem 0;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 1);
   }
   #mainNav .nav-link {
     transition: none;
     padding: 2rem 1.5rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 1);
   }
   #mainNav .nav-link:hover {
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(214, 122, 24, 1);
+    background-color: rgba(48, 48, 48, 0.6);
   }
   #mainNav .nav-link:active {
     color: white;
@@ -72,15 +75,18 @@
     border-bottom: 0.25rem solid transparent;
   }
   #mainNav.navbar-shrink .nav-link:hover {
-    color: #64a19d;
+    color: rgba(214, 122, 24, 0.8);
+    background-color: rgba(48, 48, 48, 1);
   }
   #mainNav.navbar-shrink .nav-link:active {
-    color: #467370;
+    color: rgba(214, 122, 24, 0.8);
+    background-color: rgba(48, 48, 48, 1);
   }
   #mainNav.navbar-shrink .nav-link.active {
-    color: #64a19d;
+    color: rgba(214, 122, 24, 0.8);
+    background-color: rgba(48, 48, 48, 1);
     outline: none;
-    border-bottom: 0.25rem solid #64a19d;
+    border-bottom: 0.25rem solid rgba(151, 156, 155, 1);
   }
 }
 
@@ -108,8 +114,9 @@
 }
 
 .masthead h2 {
-  max-width: 20rem;
-  font-size: 1rem;
+  color: white;
+  max-width: 50rem;
+  font-size: 2rem;
 }
 
 @media (min-width: 768px) {
@@ -130,8 +137,9 @@
     letter-spacing: 0.8rem;
   }
   .masthead h2 {
-    max-width: 30rem;
-    font-size: 1.25rem;
+    color: rgb(255, 255, 255);
+    max-width: 50rem;
+    font-size: 2rem;
   }
 }
 
@@ -146,20 +154,20 @@
 }
 
 .btn-primary {
-  background-color: #64a19d;
+  background-color: #6685e8;
 }
 
 .btn-primary:hover {
-  background-color: #4f837f;
+  background-color: #1a399c;
 }
 
 .btn-primary:focus {
-  background-color: #4f837f;
+  background-color: #d47019;
   color: white;
 }
 
 .btn-primary:active {
-  background-color: #467370 !important;
+  background-color: #d47019 !important;
 }
 
 .about-section {

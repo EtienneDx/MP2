@@ -56,6 +56,11 @@ class Train
 		return $this->name;
 	}
 
+	public function getLastCleanup()
+	{
+		return $this->LastCleanup;
+	}
+
 	public function setLastCleanup($lastCleanup)
 	{
 		$this->lastCleanup = $lastCleanup;

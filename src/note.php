@@ -31,6 +31,10 @@ if($note <= 0 || $note > 5)
 	header("Location: index.php?error=bad_note" . $note);
 	die("Redirect");
 }
+///calcul de la moyenne de notes sur un train
+	//$train->setNb_votant($train->getNb_votant()+1);
+	$train->setTotal_note($train->getTotal_note()+$note);
+	$train->setMoyenne($train->getTotal_note()/count($train->getNotations()));
 
 $user = get_user();
 $notation = new Notation($note, new DateTime("now"), $user ? $user : null, $train);
@@ -56,7 +60,18 @@ $id = $notation->getId();
 				<h3>Balance ton train</h3>
 				<p>Merci d'avoir noté la propreté de ce train, nous allons communiquer ces résultats aux équipes de nettoyage au plus vite.</p>
 				<?php if($user): ?>
-					<p>Votre score a été actualisé avec cette notation!</p>
+					<?php
+					echo 'Votre score a été actualisé avec la notation de ';
+					echo $note ;
+					?>
+					<?php
+					echo ' La moyenne de propreté de ce train est ';
+					echo $train->getMoyenne();
+					echo ' avec ';
+					echo count($train->getNotations());
+					echo ' participants!';
+					?>
+
 					<a href="index.php" class="btn btn-success">Voir mon score</a>
 				<?php
 					else:

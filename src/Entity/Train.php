@@ -32,18 +32,50 @@ class Train
 	* @ORM\OneToMany(targetEntity="Notation", mappedBy="train")
 	*/
 	private $notations;
+  private $moyenne;
+  private $nb_votant;
+  private $total_note;
 
 	public function __construct($name, $lastCleanup)
 	{
 		$this->name = $name;
 		$this->lastCleanup = $lastCleanup;
 		$this->notation = new ArrayCollection();
+    $this->nb_votant = new ArrayCollection();
 	}
 
 	public function getId()
 	{
 		return $this->id;
 	}
+  public function setMoyenne($moyenne)
+  {
+    $this->moyenne=$moyenne;
+  }
+  public function getMoyenne()
+  {
+    return $this->moyenne;
+  }
+  public function setTotal_note($total_note)
+  {
+    $this->total_note=$total_note;
+  }
+
+  public function setNb_votant($nb_votant)
+  {
+    array_push($this->nb_votant, $nb_votant);
+  }
+
+public function getTotal_note()
+{
+    $i = 0;
+    foreach ($this->notations as $n)
+    {
+        $i=$i+$n->getNote();
+    }
+    return $i;
+  }
+
 
 	public function setName($name)
 	{

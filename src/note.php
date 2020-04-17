@@ -31,10 +31,7 @@ if($note <= 0 || $note > 5)
 	header("Location: index.php?error=bad_note" . $note);
 	die("Redirect");
 }
-///calcul de la moyenne de notes sur un train
-	//$train->setNb_votant($train->getNb_votant()+1);
-	$train->setTotal_note($train->getTotal_note()+$note);
-	$train->setMoyenne($train->getTotal_note()/count($train->getNotations()));
+
 
 $user = get_user();
 $notation = new Notation($note, new DateTime("now"), $user ? $user : null, $train);
@@ -44,6 +41,8 @@ $entityManager->persist($notation);
 $entityManager->flush();
 
 $id = $notation->getId();
+$total_note = $train->getTotal_note()+$note;
+$moyenne = $total_note/count($train->getNotations());
 ?>
 <!DOCTYPE html>
 <html>
@@ -66,7 +65,7 @@ $id = $notation->getId();
 					?>
 					<?php
 					echo ' La moyenne de propreté de ce train est ';
-					echo $train->getMoyenne();
+					echo $moyenne;
 					echo ' avec ';
 					echo count($train->getNotations());
 					echo ' participants!';

@@ -1,67 +1,44 @@
 <?php
 
-function createqrcode($user_data, $prop, $direct = false)
+require_once _DIR_ . "/../autoload.php" ;
+require_once _DIR_ . "/includes/connection.php";
+
+session_start();
+
+if(!isset($_GET['train_id']))
 {
-	$data = str_replace("%s", is_string($prop) ? $prop : $prop['adress'], getenv('VIEW_PROPERTY_URL'));
-	$size = '200x200';
-	$logo = 'img/qrlogo.png';// @TODO allow custom qrlogo for premium users
-	$color = '036079';
-	//header('Content-type: image/png');
-
-	$logo = imagecreatefrompng($logo);
-
-	try
-		{
-		$QR = imagecreatefromstring(file_get_contents('https://api.qrserver.com/v1/create-qr-code/?ecc=Q&color=' . $color . '&size='.$size.'&data='.urlencode($data)));
-
-		$QR_width = imagesx($QR);
-		$QR_height = imagesy($QR);
-
-		$logo_width = imagesx($logo);
-		$logo_height = imagesy($logo);
-
-		// Scale logo to fit in the QR Code
-		$logo_qr_width = $QR_width/3;
-		$scale = $logo_width/$logo_qr_width;
-		$logo_qr_height = $logo_height/$scale;
-
-		imagecopyresampled($QR, $logo, $QR_width/3, $QR_height/3, 0, 0, $logo_qr_width, $logo_qr_height, $logo_width, $logo_height);
-
-		if($direct)
-		{
-			imagepng($QR);
-			imagedestroy($QR);
-			imagedestroy($logo);
-		}
-		else
-		{
-			ob_start();
-			imagepng($QR);
-			$contents =  ob_get_contents();
-			ob_end_clean();
-
-			imagedestroy($QR);
-			imagedestroy($logo);
-			return 'data:image/png;base64,' . base64_encode($contents);
-		}
-	}
-	catch(Exception $e)
-	{
-		if($direct)
-		{
-			imagepng($logo);
-			imagedestroy($logo);
-		}
-		else
-		{
-			ob_start();
-			imagepng($logo);
-			$contents =  ob_get_contents();
-			ob_end_clean();
-			imagedestroy($logo);
-
-			return 'data:image/png;base64,' . base64_encode($contents);
-		}
-	}
+	header("Location: index.php?error=no_train_id");
+	die("Redirect");
 }
+$repo = $entityManager->getRepository(Entity\Train::class);
+$train = $repo->find($_GET['train_id']);
+if(!$train)
+{
+	header("Location: index.php?error=bad_train_id");
+	die("Redirect");
+}
+
 ?>
+
+<!DOCTYPE html>
+<html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Qr code - Balance ton train</title>
+
+		<link rel="stylesheet" href="./adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="./css/notation.css"/>
+	</head>
+	<body>
+		<div id="container">
+			<div id="formContent">
+				<h3>Qr code</h3>
+				<img src="https://api.qrserver.com/v1/create-qr-code/?data=http://localhost:8000/notation.php?train_id=<?php echo $train->getId();?>&size=250x250" alt="" title="" />
+			</div>
+		</div>
+		<script type="text/javascript" src="./adminlte/bower_components/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="./adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="./js/notation.js"></script>
+	</body>
+</html>

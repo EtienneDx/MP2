@@ -45,14 +45,8 @@ class Train
 		return $this->id;
 	}
 
-
-  public function setNb_votant($nb_votant)
+  public function getTotal_note()
   {
-    array_push($this->nb_votant, $nb_votant);
-  }
-
-public function getTotal_note()
-{
     $i = 0;
     foreach ($this->notations as $n)
     {
@@ -75,7 +69,7 @@ public function getTotal_note()
 
 	public function getLastCleanup()
 	{
-		return $this->LastCleanup;
+		return $this->lastCleanup;
 	}
 
 	public function setLastCleanup($lastCleanup)

@@ -14,10 +14,9 @@ if(!$user->getRole())
 	$error = "Il ne s'agit pas d'un compte administrateur!";
 }
 
-$name = $_POST['train_name'];
-if($name)
+if(isset($_POST['train_name']) && $_POST['train_name'] != "")
 {
-	$n_train = new Train($name, new DateTime());
+	$n_train = new Train($_POST['train_name'], new DateTime());
 	$entityManager->persist($n_train);
 	$entityManager->flush();
 	if($entityManager->contains($n_train))

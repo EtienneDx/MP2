@@ -115,12 +115,29 @@ $user = get_user();
           </div>
           <?php if($user->getRole()): ?>
 	          <div id="admin" class="box">
-				<div class="box-header with-border">
-					<h3 class="box-title">Section administrateur</h3>
-				</div>
-				<div class="box-body">
-					<a href="add_train.php" class="btn btn-info">Ajouter un train</a>
-				</div>
+							<div class="box-header with-border">
+								<h3 class="box-title">Section administrateur</h3>
+							</div>
+							<div class="box-body">
+								<a href="add_train.php" class="btn btn-info">Ajouter un train</a><br><br>
+								<table class="table table-bordered">
+	                <tr>
+	                  <th style="width: 10px">#</th>
+	                  <th>Name</th>
+	                  <th>Dernier nettoyage</th>
+	                </tr>
+									<?php
+										$trains = $entityManager->getRepository(Entity\Train::class)->findAll();
+										foreach ($trains as $train):
+									?>
+										<tr>
+											<td><?php echo $train->getId(); ?></td>
+											<td><?php echo $train->getName(); ?></td>
+											<td><?php echo $train->getLastCleanup()->format("H:i:s d-m-Y"); ?></td>
+										</tr>
+									<?php endforeach; ?>
+								</table>
+							</div>
 	          </div>
           <?php endif; ?>
         </section>

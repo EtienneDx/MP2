@@ -120,11 +120,16 @@ $user = get_user();
 							</div>
 							<div class="box-body">
 								<a href="add_train.php" class="btn btn-info">Ajouter un train</a><br><br>
+								<p>Les notes ne prennent en compte que la période actuelle depuis le dernier nettoyage</p>
 								<table class="table table-bordered">
 	                <tr>
 	                  <th style="width: 10px">#</th>
 	                  <th>Name</th>
+										<th>Note actuelle</th>
+										<th>Nombre de votants</th>
 	                  <th>Dernier nettoyage</th>
+										<th>QR Code</th>
+										<th>Changer la date de nettoyage</th>
 	                </tr>
 									<?php
 										$trains = $entityManager->getRepository(Entity\Train::class)->findAll();
@@ -132,8 +137,12 @@ $user = get_user();
 									?>
 										<tr>
 											<td><?php echo $train->getId(); ?></td>
-											<td><?php echo $train->getName(); ?></td>
-											<td><?php echo $train->getLastCleanup()->format("H:i:s d-m-Y"); ?></td>
+											<td><a href="./notation.php?train_id=<?php echo $train->getId(); ?>"><?php echo $train->getName(); ?></a></td>
+											<td><?php echo number_format($train->getNote(), 1); ?> / 5</td>
+											<td><?php echo $train->getNotationsCount(); ?></td>
+											<td><?php echo $train->getLastCleanup()->format("H:i d/m/Y"); ?></td>
+											<td><a href="./qrcode.php?train_id=<?php echo $train->getId(); ?>" class="btn btn-warning">Obtenir le QR Code</a></td>
+											<td><a href="./clean.php?train_id=<?php echo $train->getId(); ?>" class="btn btn-success">Nettoyé aujourd'hui</a></td>
 										</tr>
 									<?php endforeach; ?>
 								</table>

@@ -1,7 +1,7 @@
 <?php
 
-require_once _DIR_ . "/../autoload.php" ;
-require_once _DIR_ . "/includes/connection.php";
+require_once __DIR__ . "/../autoload.php" ;
+require_once __DIR__ . "/includes/connection.php";
 
 session_start();
 
@@ -35,6 +35,7 @@ if(!$train)
 			<div id="formContent">
 				<h3>Qr code</h3>
 				<img src="https://api.qrserver.com/v1/create-qr-code/?data=http://localhost:8000/notation.php?train_id=<?php echo $train->getId();?>&size=250x250" alt="" title="" />
+				<p style="font-weight: bold; font-size: 2em;">Balance ton train</p>
 			</div>
 		</div>
 		<script type="text/javascript" src="./adminlte/bower_components/jquery/dist/jquery.min.js"></script>

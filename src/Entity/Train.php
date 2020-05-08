@@ -83,6 +83,38 @@ class Train
 		return $this->notations;
 	}
 
+  public function getNote()
+  {
+    $n = 0;
+    $c = 0;
+    foreach ($this->notations as $note)
+    {
+      if($note->getDate() > $this->getLastCleanup())
+      {
+        $c++;
+        $n += $note->getNote();
+      }
+    }
+    if($c > 0)
+    {
+      return $n / $c;
+    }
+    return 5;// no notations mean still clean
+  }
+
+  public function getNotationsCount()
+  {
+    $c = 0;
+    foreach ($this->notations as $note)
+    {
+      if($note->getDate() > $this->getLastCleanup())
+      {
+        $c++;
+      }
+    }
+    return $c;
+  }
+
 	public function addNotation($notation)
 	{
 		array_push($this->notations, $notation);

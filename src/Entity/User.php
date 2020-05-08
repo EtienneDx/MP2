@@ -29,7 +29,7 @@ class User
   private $password;
 
 	/**
-	* @ORM\OneToMany(targetEntity="Notation", mappedBy="train")
+	* @ORM\OneToMany(targetEntity="Notation", mappedBy="user")
 	*/
 	private $notations;
 
@@ -85,19 +85,20 @@ class User
 	public function getTrainsCount()
 	{
 		$set = array();
-    	$i = 0;
-    	foreach ($this->notations as $n)
+  	$i = 0;
+    //var_dump($this->notations);
+  	foreach ($this->notations->getValues() as $n)
+  	{
+    	if(!in_array($n->getTrain()->getId(), $set))
     	{
-      	if(!in_array($n->getTrain()->getId(), $set))
-      	{
-        	array_push($set, $n->getTrain()->getId());
-        	$i++;
-      	}
+      	array_push($set, $n->getTrain()->getId());
+      	$i++;
     	}
-    	return $i;
   	}
+  	return $i;
+	}
 
-  	public function getRole()
+	public function getRole()
 	{
 		return $this->role;
 	}

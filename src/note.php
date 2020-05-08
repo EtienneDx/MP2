@@ -41,8 +41,7 @@ $entityManager->persist($notation);
 $entityManager->flush();
 
 $id = $notation->getId();
-$total_note = $train->getTotal_note()+$note;
-$moyenne = $total_note/count($train->getNotations());
+$moyenne = $train->getNote();
 ?>
 <!DOCTYPE html>
 <html>
@@ -62,15 +61,16 @@ $moyenne = $total_note/count($train->getNotations());
 					<?php
 					echo 'Votre score a été actualisé avec la notation de ';
 					echo $note ;
-					?>
+					?>.
+					<br>
 					<?php
 					echo ' La moyenne de propreté de ce train est ';
-					echo $moyenne;
+					echo number_format($moyenne, 1);
 					echo ' avec ';
-					echo count($train->getNotations());
+					echo $train->getNotationsCount();
 					echo ' participants!';
 					?>
-
+					<br><br>
 					<a href="index.php" class="btn btn-success">Voir mon score</a>
 				<?php
 					else:
